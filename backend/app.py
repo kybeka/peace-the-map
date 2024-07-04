@@ -6,6 +6,8 @@ app = Flask(__name__)
 CORS(app)  # This allows cross-origin requests, necessary for communication between frontend and backend
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///markers.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 class Marker(db.Model):
@@ -24,7 +26,9 @@ class Marker(db.Model):
             'created_at': self.created_at.isoformat()
         }
 
-db.create_all()
+# Create the database and the tables within the application context
+with app.app_context():
+    db.create_all()
 
 @app.route('/markers', methods=['POST'])
 def add_marker():
