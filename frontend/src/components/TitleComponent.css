@@ -1,0 +1,15 @@
+/* src/components/Title.css */
+.title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    pointer-events: none; /* This makes the title unclickable */
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+/* src/components/MarkerForm.css */
+.form-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input,
+.form-container textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-container button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}

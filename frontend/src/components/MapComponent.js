@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+import './MapComponent.css';
+import TitleComponent from './TitleComponent';
 
 const MapComponent = () => {
     const [markers, setMarkers] = useState([]);
@@ -45,7 +47,8 @@ const MapComponent = () => {
 
     return (
         <div>
-            <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "80vh", width: "100%" }}>
+             <TitleComponent text="Queering the Map" />
+            <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "100vh", width: "100%" }}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
