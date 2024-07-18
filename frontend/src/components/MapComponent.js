@@ -1,7 +1,8 @@
 // src/components/MapComponent.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from "leaflet";
 import axios from 'axios';
 import './MapComponent.css';
 import TitleComponent from './TitleComponent';
@@ -10,6 +11,14 @@ const MapComponent = () => {
     const [markers, setMarkers] = useState([]);
     const [newMarker, setNewMarker] = useState(null);
     const [message, setMessage] = useState("");
+    const mapRef = useRef(null);
+
+    const customMarker = new L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
+        iconSize: [25, 41],
+        iconAnchor: [10, 41],
+        popupAnchor: [2, -40]
+      });
 
     useEffect(() => {
         axios.get('http://localhost:5000/markers')
@@ -47,20 +56,20 @@ const MapComponent = () => {
 
     return (
         <div>
-             <TitleComponent text="Queering the Map" />
-            <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "100vh", width: "100%" }}>
+             <TitleComponent text="Peacing the Map" />
+            <MapContainer center={[51.505, -0.09]} zoom={13} ref={mapRef} style={{ height: "100vh", width: "100%" }}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {markers.map(marker => (
-                    <Marker key={marker.id} position={[marker.latitude, marker.longitude]}>
+                    <Marker  icon={customMarker} key={marker.id} position={[marker.latitude, marker.longitude]}>
                         <Popup>
                             {marker.message}
                         </Popup>
                     </Marker>
                 ))}
                 {newMarker && (
-                    <Marker position={[newMarker.latitude, newMarker.longitude]}>
+                    <Marker icon={customMarker} position={[newMarker.latitude, newMarker.longitude]}>
                         <Popup>
                             <div>
                                 <textarea
