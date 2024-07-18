@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import L from "leaflet";
 import axios from 'axios';
 import './MapComponent.css';
+import markerPic from '../assets/small-marker.png';
 import TitleComponent from './TitleComponent';
 
 const MapComponent = () => {
@@ -14,7 +15,8 @@ const MapComponent = () => {
     const mapRef = useRef(null);
 
     const customMarker = new L.icon({
-        iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
+        iconUrl: markerPic,
+        //iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
         iconSize: [25, 41],
         iconAnchor: [10, 41],
         popupAnchor: [2, -40]

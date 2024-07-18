@@ -5,6 +5,7 @@ This project is initially inspired by [Queering The Map](https://www.queeringthe
 
 todo:
 
+- edit map look via react-leaflet api should be possible otherwise ->
 - maybe convert to maplibregl (in order to color tint map/heat wave) 
     - connect to [cfr](https://www.cfr.org/
 global-conflict-tracker))
